@@ -1,1 +1,1988 @@
-<html> s</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trauma Attraction Returns — 1st Time Productions</title>
+  <meta name="description" content="After a sold-out debut, the award-winning stage play Trauma Attraction returns for two special performances at the Edge Theater. December 12–13, 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;1,200;1,300&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* =============================================
+       DESIGN TOKENS & RESET
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:        #080608;
+      --deep:         #0d0a0e;
+      --burgundy:     #6b1a2a;
+      --burgundy-lt:  #8b2236;
+      --gold:         #c9a84c;
+      --gold-lt:      #e2c276;
+      --gold-dim:     #7a6230;
+      --cream:        #e8dfc8;
+      --cream-dim:    #b5a98a;
+      --red-accent:   #9b1c2e;
+      --white:        #f5f0e8;
+      --muted:        #7a7068;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Crimson Pro', Georgia, serif;
+      --font-ui:      'Montserrat', sans-serif;
+
+      --section-pad:  clamp(80px, 10vw, 140px);
+      --container:    1180px;
+      --transition:   0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--burgundy); color: var(--cream); }
+
+    img { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* =============================================
+       GRAIN TEXTURE OVERLAY
+    ============================================= */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* =============================================
+       NAVIGATION
+    ============================================= */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(24px, 5vw, 64px);
+      height: 72px;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .nav.scrolled {
+      background: rgba(8, 6, 8, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(201, 168, 76, 0.15);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo-mark {
+      width: 32px; height: 32px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-family: var(--font-ui);
+      font-weight: 700;
+      letter-spacing: 0;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(24px, 3vw, 44px);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 100%;
+      height: 1px;
+      background: var(--gold);
+      transition: right var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a:hover::after { right: 0; }
+
+    .nav-cta {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--black) !important;
+      background: var(--gold);
+      padding: 10px 22px;
+      border-radius: 2px;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--gold-lt) !important; transform: translateY(-1px) !important; color: var(--black) !important; }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 6px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--cream);
+      transition: var(--transition);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(8, 6, 8, 0.98);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      font-weight: 300;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+      transition: color var(--transition);
+    }
+
+    .mobile-menu a:hover { color: var(--gold); }
+
+    .mobile-close {
+      position: absolute;
+      top: 24px; right: 28px;
+      background: none;
+      border: none;
+      color: var(--cream-dim);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Cinematic BG — placeholder slot for production photo */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(160deg, rgba(107,26,42,0.45) 0%, transparent 50%),
+        linear-gradient(to top, rgba(8,6,8,1) 0%, rgba(8,6,8,0.3) 60%, rgba(8,6,8,0.1) 100%),
+        url('images/Trauma-Attraction-wide-image.png') center/cover no-repeat;
+        radial-gradient(ellipse at 30% 40%, #2d0e14 0%, #0d0a0e 45%, #080608 100%);
+      transform: scale(1.05);
+      transition: transform 12s ease;
+    }
+
+    .hero-bg.loaded { transform: scale(1); }
+
+    /* Spotlight effect */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 50% 35%, rgba(201,168,76,0.08) 0%, transparent 70%);
+    }
+
+    /* Photo placeholder label */
+    .hero-photo-placeholder {
+      position: absolute;
+      bottom: 40%;
+      right: 8%;
+      opacity: 0.12;
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      writing-mode: vertical-rl;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: clamp(100px, 15vw, 160px) clamp(24px, 6vw, 80px) clamp(80px, 10vw, 120px);
+      max-width: 900px;
+      animation: heroFadeUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      animation: heroFadeUp 1.2s 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 12vw, 9rem);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 8px;
+      animation: heroFadeUp 1.2s 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-lt);
+      font-weight: 300;
+    }
+
+    .hero-title-line2 {
+      font-size: clamp(2.2rem, 6vw, 5rem);
+      font-weight: 600;
+      display: block;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+
+    .hero-returns-badge {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 22px;
+      animation: heroFadeUp 1.2s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 32px auto;
+      animation: heroFadeUp 1.2s 0.35s both;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream-dim);
+      max-width: 600px;
+      margin: 0 auto 16px;
+      animation: heroFadeUp 1.2s 0.4s both;
+    }
+
+    .hero-body {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 48px;
+      animation: heroFadeUp 1.2s 0.5s both;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: heroFadeUp 1.2s 0.6s both;
+    }
+
+    .btn-primary {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      padding: 16px 40px;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(201,168,76,0.3);
+    }
+
+    .btn-secondary {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: transparent;
+      padding: 16px 40px;
+      border-radius: 2px;
+      border: 1px solid rgba(232,223,200,0.3);
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition), transform var(--transition);
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.4;
+      animation: heroFadeUp 1.2s 1s both;
+    }
+
+    .hero-scroll span {
+      font-family: var(--font-ui);
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 0.8; transform: scaleY(1.15); }
+    }
+
+    /* =============================================
+       SECTION SHARED
+    ============================================= */
+    .section {
+      padding: var(--section-pad) clamp(24px, 6vw, 80px);
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+
+    .section-full {
+      padding: var(--section-pad) 0;
+    }
+
+    .section-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 clamp(24px, 6vw, 80px);
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold-lt);
+    }
+
+    .section-body {
+      font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+      color: var(--cream-dim);
+      line-height: 1.8;
+      max-width: 680px;
+    }
+
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+    .reveal-delay-7 { transition-delay: 0.7s; }
+    .reveal-delay-8 { transition-delay: 0.8s; }
+
+    /* =============================================
+       ABOUT SECTION
+    ============================================= */
+    .about {
+      position: relative;
+      background: var(--deep);
+      border-top: 1px solid rgba(201,168,76,0.12);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
+
+    .about::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(to bottom, var(--burgundy), var(--gold), var(--burgundy));
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(48px, 8vw, 100px);
+      align-items: center;
+    }
+
+  .about-visual {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: var(--burgundy);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+    /* REPLACE inner with: <img src="your-cast-photo.jpg" alt="..." /> */
+    .about-visual-inner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a0810 0%, #3d1020 40%, #1a0810 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .photo-placeholder-label {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.4);
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .photo-placeholder-icon {
+      width: 56px; height: 56px;
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(201,168,76,0.3);
+      font-size: 1.5rem;
+    }
+
+    .about-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,6,8,0.6) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Gold frame decoration */
+    .about-visual-frame {
+      position: absolute;
+      bottom: -12px;
+      right: -12px;
+      width: calc(100% - 24px);
+      height: calc(100% - 24px);
+      border: 1px solid rgba(201,168,76,0.25);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .about-text { }
+
+    .about-pull-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.3;
+      border-left: 2px solid var(--gold);
+      padding-left: 28px;
+      margin: 32px 0;
+    }
+
+    .about-body-text {
+      font-size: 1.1rem;
+      color: var(--cream-dim);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .about-themes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 36px;
+    }
+
+    .theme-tag {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 7px 16px;
+      border-radius: 100px;
+      background: rgba(201,168,76,0.05);
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .theme-tag:hover {
+      background: rgba(201,168,76,0.12);
+      border-color: var(--gold);
+    }
+
+    /* =============================================
+       EVENT INFO
+    ============================================= */
+    .event-section {
+      position: relative;
+    }
+
+    .event-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(107,26,42,0.15) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .event-header {
+      text-align: center;
+      margin-bottom: 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .event-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .event-card {
+      background: var(--deep);
+      border: 1px solid rgba(201,168,76,0.1);
+      padding: 44px 32px;
+      text-align: center;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .event-card:hover {
+      background: rgba(201,168,76,0.04);
+      border-color: rgba(201,168,76,0.3);
+      transform: translateY(-4px);
+    }
+
+    .event-card:hover::before { opacity: 1; }
+
+    .event-card-icon {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      filter: sepia(1) saturate(2) hue-rotate(340deg) brightness(0.8);
+    }
+
+    .event-card-label {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .event-card-value {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .event-card-sub {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .event-card-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-bottom: 2px;
+      border-bottom: 1px solid rgba(201,168,76,0.4);
+      transition: border-color var(--transition);
+    }
+
+    .event-card-link:hover { border-color: var(--gold); }
+
+    /* =============================================
+       WHY ATTEND
+    ============================================= */
+    .why-section {
+      position: relative;
+      background: var(--deep);
+      border-top: 1px solid rgba(201,168,76,0.08);
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      overflow: hidden;
+    }
+
+    .why-section::before {
+      content: 'TRAUMA ATTRACTION';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 15vw, 18rem);
+      font-weight: 700;
+      color: rgba(201,168,76,0.025);
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-header {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .why-number {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: rgba(201,168,76,0.2);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 56px;
+      text-align: right;
+    }
+
+    .why-text {}
+
+    .why-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .why-body {
+      font-size: 1rem;
+      color: var(--cream-dim);
+      line-height: 1.75;
+    }
+
+    /* =============================================
+       CAST SECTION
+    ============================================= */
+    .cast-section {
+      position: relative;
+    }
+
+    .cast-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .cast-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .cast-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--deep);
+      cursor: pointer;
+      group: true;
+    }
+
+    /* Cast photo placeholder — REPLACE with: <img src="headshots/name.jpg" /> */
+    .cast-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .cast-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--burgundy) 0%, #1a0610 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Assign subtle variation per card */
+    .cast-card:nth-child(2) .cast-photo-placeholder { background: linear-gradient(135deg, #1a1a3e 0%, #080820 100%); }
+    .cast-card:nth-child(3) .cast-photo-placeholder { background: linear-gradient(135deg, #1a0e00 0%, #0d0a00 100%); }
+    .cast-card:nth-child(4) .cast-photo-placeholder { background: linear-gradient(135deg, #001a1a 0%, #000d0d 100%); }
+    .cast-card:nth-child(5) .cast-photo-placeholder { background: linear-gradient(135deg, #1a0016 0%, #0d000e 100%); }
+    .cast-card:nth-child(6) .cast-photo-placeholder { background: linear-gradient(135deg, #0d1a00 0%, #060d00 100%); }
+    .cast-card:nth-child(7) .cast-photo-placeholder { background: linear-gradient(135deg, #1a1000 0%, #0d0800 100%); }
+    .cast-card:nth-child(8) .cast-photo-placeholder { background: linear-gradient(135deg, #001a10 0%, #000d08 100%); }
+
+    .cast-placeholder-icon {
+      font-size: 2.5rem;
+      opacity: 0.2;
+    }
+
+    .cast-placeholder-text {
+      font-family: var(--font-ui);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.3);
+    }
+
+    .cast-card:hover .cast-photo-placeholder,
+    .cast-card:hover .cast-photo {
+      transform: scale(1.06);
+    }
+
+    .cast-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,6,8,0.95) 0%, rgba(8,6,8,0.2) 55%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px 22px;
+      transform: translateY(4px);
+      transition: transform var(--transition);
+    }
+
+    .cast-card:hover .cast-overlay { transform: translateY(0); }
+
+    .cast-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .cast-role {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 4px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .cast-card:hover .cast-role {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =============================================
+       TICKET CTA BAND
+    ============================================= */
+    .cta-band {
+      position: relative;
+      background:
+        linear-gradient(135deg, var(--burgundy) 0%, #3d0e1e 50%, var(--burgundy) 100%);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 100% at 50% 50%, rgba(201,168,76,0.12) 0%, transparent 70%),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          transparent 40px,
+          rgba(255,255,255,0.015) 40px,
+          rgba(255,255,255,0.015) 41px
+        );
+    }
+
+    .cta-band-inner {
+      position: relative;
+      z-index: 1;
+      padding: 80px clamp(24px, 6vw, 80px);
+    }
+
+    .cta-band-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .cta-band-sub {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(232,223,200,0.6);
+      margin-bottom: 36px;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: #050405;
+      border-top: 1px solid rgba(201,168,76,0.12);
+      padding: 64px clamp(24px, 6vw, 80px) 36px;
+    }
+
+    .footer-grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 56px;
+    }
+
+    .footer-brand {}
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .footer-tagline {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 240px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .social-btn {
+      width: 38px; height: 38px;
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      transition: border-color var(--transition), color var(--transition), transform var(--transition);
+      cursor: pointer;
+    }
+
+    .social-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .footer-col-title {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      font-size: 0.95rem;
+      color: var(--muted);
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--cream); }
+
+    .footer-bottom {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-legal a {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      transition: color var(--transition);
+    }
+
+    .footer-legal a:hover { color: var(--cream-dim); }
+
+    /* =============================================
+       STICKY TICKET BAR
+    ============================================= */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 998;
+      background: rgba(8,6,8,0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      padding: 14px clamp(24px, 5vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transform: translateY(100%);
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .sticky-bar.visible { transform: translateY(0); }
+
+    .sticky-bar-text {
+      font-family: var(--font-display);
+      font-size: clamp(0.9rem, 2vw, 1.15rem);
+      font-style: italic;
+      color: var(--cream-dim);
+    }
+
+    .sticky-bar-text strong {
+      color: var(--white);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .sticky-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    .sticky-dates {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .sticky-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+      padding: 4px;
+      transition: color var(--transition);
+    }
+
+    .sticky-close:hover { color: var(--cream); }
+
+    /* =============================================
+       DECORATIVE DIVIDERS
+    ============================================= */
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0 auto 48px;
+      max-width: 200px;
+    }
+
+    .gold-divider::before,
+    .gold-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(201,168,76,0.3);
+    }
+
+    .gold-divider-dot {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 1024px) {
+      .event-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cast-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .book-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-visual {
+        aspect-ratio: 16/9;
+        max-height: 400px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .why-grid {
+        gap: 36px 48px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .cast-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .sticky-bar-text { display: none; }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .event-cards { grid-template-columns: 1fr 1fr; gap: 1px; }
+      .event-card { padding: 30px 20px; }
+      .cast-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; max-width: 280px; text-align: center; }
+    }
+
+    /* =============================================
+       CUSTOM SCROLLBAR
+    ============================================= */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--burgundy); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+    /* =============================================
+       MOBILE MENU DISPLAY STATES
+    ============================================= */
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+
+    /* =============================================
+       BOOK SECTION
+    ============================================= */
+    .book-section {
+      position: relative;
+      background: var(--deep);
+      border-top: 1px solid rgba(201,168,76,0.12);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(48px, 8vw, 100px);
+      align-items: center;
+    }
+
+    .book-visual {
+      position: relative;
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+
+    .book-visual img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .book-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.4;
+      border-left: 2px solid var(--gold);
+      padding-left: 28px;
+      margin: 28px 0;
+    }
+
+    .book-price {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--gold-lt);
+      margin-bottom: 16px;
+    }
+
+    .book-presale-note {
+      font-size: 1.05rem;
+      color: var(--cream-dim);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ============ MOBILE MENU ============ -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <button class="mobile-close" id="menuClose" aria-label="Close menu">×</button>
+    <a href="#home" onclick="closeMobile()">Home</a>
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#event" onclick="closeMobile()">Event Info</a>
+    <a href="#cast" onclick="closeMobile()">Cast & Team</a>
+    <a href="https://square.link/u/bAwhIsuK" onclick="closeMobile()" target="_blank" rel="noopener">Tickets: Dec 12</a>
+    <a href="https://square.link/u/bxWueHNr" onclick="closeMobile()" target="_blank" rel="noopener">Tickets: Dec 13</a>
+    <a href="https://checkout.square.site/merchant/MLBFVWZNY9SH3/checkout/RARNSV25I4DYPFZJROOMVIYN" onclick="closeMobile()" target="_blank" rel="noopener">Pre-Order the Book</a>
+  </div>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <a href="#home" class="nav-logo" aria-label="1st Time Productions">
+      <div class="nav-logo-mark" aria-hidden="true">1P</div>
+      1st Time Productions
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#event">Event Info</a></li>
+      <li><a href="#cast">Cast & Team</a></li>
+      <li>
+        <a href="https://square.link/u/bAwhIsuK"
+           class="nav-cta"
+           target="_blank"
+           rel="noopener">Tickets: Dec 12</a>
+      </li>
+      <li>
+        <a href="https://square.link/u/bxWueHNr"
+           class="nav-cta"
+           target="_blank"
+           rel="noopener">Tickets: Dec 13</a>
+      </li>
+      <li><a href="https://checkout.square.site/merchant/MLBFVWZNY9SH3/checkout/RARNSV25I4DYPFZJROOMVIYN" target="_blank" rel="noopener">Pre-Order the Book</a></li>
+    </ul>
+    <button class="nav-hamburger" id="menuOpen" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home" aria-labelledby="hero-title">
+    <div class="hero-bg" id="heroBg">
+      <!--
+        PHOTO INTEGRATION:
+        Replace this element's background with:
+        background-image: url('your-production-hero-photo.jpg');
+        background-position: center;
+        background-size: cover;
+        Keep the gradient overlays via ::before / the inline gradient layers above.
+
+        Ideal photo: dramatic single performer or ensemble silhouette,
+        dark moody theatrical lighting, portrait or landscape orientation.
+      -->
+    </div>
+    <div class="hero-photo-placeholder" aria-hidden="true">[ Replace with Hero Image ]</div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal">1st Time Productions Presents</p>
+
+      <span class="hero-returns-badge reveal reveal-delay-1">Back by Popular Demand</span>
+
+      <h1 class="hero-title reveal reveal-delay-1" id="hero-title">
+        <em>Trauma</em>
+        <span class="hero-title-line2">Attraction</span>
+      </h1>
+
+      <div class="hero-divider reveal reveal-delay-2" aria-hidden="true"></div>
+
+      <p class="hero-subtitle reveal reveal-delay-3">
+        The award-winning stage play returns to the Edge Theater for two special performances.
+      </p>
+      <p class="hero-body reveal reveal-delay-4">
+        After an incredible opening weekend and successful first run, Trauma Attraction is back — a powerful, thought-provoking theatrical experience exploring love, trauma, relationships, and healing.
+      </p>
+
+      <div class="hero-ctas reveal reveal-delay-5">
+        <a href="https://square.link/u/bAwhIsuK"
+           class="btn-primary"
+           target="_blank"
+           rel="noopener"
+           aria-label="Buy tickets for Trauma Attraction, December 12">
+          Buy Tickets — Dec 12
+        </a>
+        <a href="https://square.link/u/bxWueHNr"
+           class="btn-primary"
+           target="_blank"
+           rel="noopener"
+           aria-label="Buy tickets for Trauma Attraction, December 13">
+          Buy Tickets — Dec 13
+        </a>
+        <a href="#event" class="btn-secondary">View Event Details</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about section-full" id="about" aria-labelledby="about-title">
+    <div class="section-inner">
+      <div class="about-grid">
+
+<div class="about-visual reveal">
+  <img
+    src="images/Trauma-Attraction-wide-image.png"
+    alt="Trauma Attraction production image"
+    class="about-production-photo"
+  />
+  <div class="about-visual-frame" aria-hidden="true"></div>
+</div>
+
+        <div class="about-text">
+          <p class="section-eyebrow reveal">About the Production</p>
+          <h2 class="section-title reveal reveal-delay-1" id="about-title">
+            Some wounds demand<br/><em>to be witnessed.</em>
+          </h2>
+
+          <blockquote class="about-pull-quote reveal reveal-delay-2">
+            "More than a play — an emotional reckoning you won't forget."
+          </blockquote>
+
+          <p class="about-body-text reveal reveal-delay-3">
+            After an incredible opening weekend and a successful first run, the award-winning stage play <em>Trauma Attraction</em> returns to the Edge Theater for two special performances. Written and produced by 1st Time Productions, this powerful, thought-provoking theatrical experience explores the connection between love, trauma, relationships, and healing.
+          </p>
+          <p class="about-body-text reveal reveal-delay-4">
+            Through breathtaking performances, intimate storytelling, and a searing emotional landscape, the production explores how love and fear shape us, how wounds define us — and how, with courage and community, we find our way back to ourselves.
+          </p>
+          <p class="about-body-text reveal reveal-delay-5">
+            Experience the stage play that audiences are still talking about after its successful debut. Gather your family and friends and witness an unforgettable story of love, trauma, healing, and hope.
+          </p>
+
+          <div class="about-themes reveal reveal-delay-5">
+            <span class="theme-tag">Love</span>
+            <span class="theme-tag">Relationships</span>
+            <span class="theme-tag">Healing</span>
+            <span class="theme-tag">Resilience</span>
+            <span class="theme-tag">Hope</span>
+            <span class="theme-tag">Immersive Theatre</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVENT INFO ============ -->
+  <section class="event-section section" id="event" aria-labelledby="event-title">
+    <div class="event-header">
+      <p class="section-eyebrow reveal">Mark Your Calendar</p>
+      <h2 class="section-title reveal reveal-delay-1" id="event-title" style="text-align:center;">
+        The Experience Returns
+      </h2>
+      <div class="gold-divider reveal reveal-delay-2" aria-hidden="true">
+        <div class="gold-divider-dot"></div>
+      </div>
+    </div>
+
+    <div class="event-cards" role="list">
+
+      <article class="event-card reveal" role="listitem">
+        <div class="event-card-icon" aria-hidden="true">🗓</div>
+        <p class="event-card-label">Dates</p>
+        <p class="event-card-value">December 12–13<br/>2026</p>
+        <p class="event-card-sub">Two special performances</p>
+      </article>
+
+<article class="event-card reveal reveal-delay-1" role="listitem">
+  <div class="event-card-icon" aria-hidden="true">🕡</div>
+  <p class="event-card-label">Show Times</p>
+  <p class="event-card-value">
+    Sat: Doors 6 PM / Show 7 PM<br/>
+    Sun: Doors 4 PM / Show 5 PM
+  </p>
+  <p class="event-card-sub">
+    Doors open 1 hour before showtime
+  </p>
+</article>
+
+      <article class="event-card reveal reveal-delay-2" role="listitem">
+        <div class="event-card-icon" aria-hidden="true">📍</div>
+        <p class="event-card-label">Venue</p>
+        <p class="event-card-value">Edge Theater</p>
+        <p class="event-card-sub">5451 N. Broadway<br/>Chicago, IL 60640</p>
+      </article>
+
+      <article class="event-card reveal reveal-delay-3" role="listitem">
+        <div class="event-card-icon" aria-hidden="true">🎟</div>
+        <p class="event-card-label">Saturday, Dec 12</p>
+        <p class="event-card-value">Doors 6 PM / Show 7 PM</p>
+        <a href="https://square.link/u/bAwhIsuK"
+           class="event-card-link"
+           target="_blank"
+           rel="noopener"
+           aria-label="Buy tickets for Trauma Attraction, December 12">
+          Buy Tickets →
+        </a>
+      </article>
+
+      <article class="event-card reveal reveal-delay-4" role="listitem">
+        <div class="event-card-icon" aria-hidden="true">🎟</div>
+        <p class="event-card-label">Sunday, Dec 13</p>
+        <p class="event-card-value">Doors 4 PM / Show 5 PM</p>
+        <a href="https://square.link/u/bxWueHNr"
+           class="event-card-link"
+           target="_blank"
+           rel="noopener"
+           aria-label="Buy tickets for Trauma Attraction, December 13">
+          Buy Tickets →
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ WHY ATTEND ============ -->
+  <section class="why-section section-full" aria-labelledby="why-title">
+    <div class="section-inner">
+      <div class="why-grid">
+
+        <div class="why-header">
+          <p class="section-eyebrow reveal">Why You Should Be There</p>
+          <h2 class="section-title reveal reveal-delay-1" id="why-title" style="text-align:center;">
+            This isn't just theatre.<br/><em>It's transformation.</em>
+          </h2>
+        </div>
+
+        <div class="why-item reveal">
+          <div class="why-number" aria-hidden="true">01</div>
+          <div class="why-text">
+            <h3 class="why-title">Emotional Storytelling</h3>
+            <p class="why-body">This production doesn't flinch. Every scene is crafted to reach you where you actually live — in love, in loss, in the unspoken and the unprocessed.</p>
+          </div>
+        </div>
+
+        <div class="why-item reveal reveal-delay-1">
+          <div class="why-number" aria-hidden="true">02</div>
+          <div class="why-text">
+            <h3 class="why-title">Live Theatrical Performance</h3>
+            <p class="why-body">No screen can replicate this. The energy of live theatre — the breath, the tension, the electricity between performer and audience — is irreplaceable.</p>
+          </div>
+        </div>
+
+        <div class="why-item reveal reveal-delay-2">
+          <div class="why-number" aria-hidden="true">03</div>
+          <div class="why-text">
+            <h3 class="why-title">Safe, Supportive Space</h3>
+            <p class="why-body">Difficult themes are explored with care and intentionality. You are welcomed, held, and guided through the experience in a community of witnesses.</p>
+          </div>
+        </div>
+
+        <div class="why-item reveal reveal-delay-3">
+          <div class="why-number" aria-hidden="true">04</div>
+          <div class="why-text">
+            <h3 class="why-title">Genuine Resilience & Healing</h3>
+            <p class="why-body">Walk in carrying what you carry. Walk out feeling something shift. <em>Trauma Attraction</em> is built to leave you changed — lighter, clearer, seen.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAST & TEAM ============ -->
+  <section class="cast-section section" id="cast" aria-labelledby="cast-title">
+    <div class="cast-header">
+      <p class="section-eyebrow reveal">The Company</p>
+      <h2 class="section-title reveal reveal-delay-1" id="cast-title" style="text-align:center;">
+        Cast &amp; <em>Creative Team</em>
+      </h2>
+      <p class="section-body reveal reveal-delay-2" style="text-align:center; margin: 0 auto 52px;">
+        Extraordinary performers bringing extraordinary truth to the stage.
+      </p>
+    </div>
+
+    <div class="cast-grid" role="list">
+
+      <!-- PHOTO INTEGRATION NOTE:
+           For each cast-card, replace .cast-photo-placeholder with:
+           <img src="headshots/takeisha-monet.jpg"
+                alt="Takeisha Monet"
+                class="cast-photo" />
+           Recommended: Square or portrait crops, dramatically lit, dark background preferred.
+      -->
+
+<article class="cast-card reveal" role="listitem" aria-label="Takeisha Monet">
+  <img
+    src="images/Takeisha-Monet.jpg"
+    alt="Takeisha Monet"
+    class="cast-photo"
+  />
+  <div class="cast-overlay">
+    <h3 class="cast-name">Takeisha Monet</h3>
+    <p class="cast-role">As Kim</p>
+  </div>
+</article>
+
+<article class="cast-card reveal" role="listitem" aria-label="Reggie Robinson">
+  <img
+    src="images/Reggie-Robinson-e1772063600223.jpeg"
+    alt="Reggie Robinson"
+    class="cast-photo"
+  />
+  <div class="cast-overlay">
+    <h3 class="cast-name">Reggie Robinson</h3>
+    <p class="cast-role">as James/Barista</p>
+  </div>
+</article>
+
+<article class="cast-card reveal" role="listitem" aria-label="Mabel Fleming">
+  <img
+    src="images/Mabel-Fleming.png"
+    alt="Mabel Fleming"
+    class="cast-photo"
+  />
+  <div class="cast-overlay">
+    <h3 class="cast-name">Mabel Fleming</h3>
+    <p class="cast-role">as Maya</p>
+  </div>
+</article>
+
+<article class="cast-card reveal" role="listitem" aria-label="Caiden Sanders">
+  <img
+    src="images/Caiden-Sanders-2.png"
+    alt="Caiden Sanders"
+    class="cast-photo"
+  />
+  <div class="cast-overlay">
+    <h3 class="cast-name">Caiden Sanders</h3>
+    <p class="cast-role">as Young Byron</p>
+  </div>
+</article>
+
+<article class="cast-card reveal" role="listitem" aria-label="Donnell Brooks">
+  <img
+    src="images/Donnell-Brooks.png"
+    alt="Donnell Brooks"
+    class="cast-photo"
+  />
+  <div class="cast-overlay">
+    <h3 class="cast-name">Donnell Brooks</h3>
+    <p class="cast-role">as Byron</p>
+  </div>
+</article>
+
+<article class="cast-card reveal" role="listitem" aria-label="Allan Lonell">
+  <img
+    src="images/Allan-Lonell.png"
+    alt="Allan Lonell"
+    class="cast-photo"
+  />
+  <div class="cast-overlay">
+    <h3 class="cast-name">Allan Lonell</h3>
+    <p class="cast-role">as Shawn</p>
+  </div>
+</article>
+
+<article class="cast-card reveal" role="listitem" aria-label="Benaiah Link">
+  <img
+    src="images/1000025149.png"
+    alt="Benaiah Link"
+    class="cast-photo"
+  />
+  <div class="cast-overlay">
+    <h3 class="cast-name">Benaiah Link</h3>
+    <p class="cast-role">Playwright/Director</p>
+  </div>
+</article>
+
+    </div>
+  </section>
+
+  <!-- ============ BOOK PRE-SALE ============ -->
+  <section class="book-section section-full" id="book" aria-labelledby="book-title">
+    <div class="section-inner">
+      <div class="book-grid">
+
+        <div class="book-visual reveal">
+          <img
+            src="images/trauma-attraction-book-cover.png"
+            alt="Trauma Attraction: A Novel by Benaiah Link book cover"
+          />
+        </div>
+
+        <div class="book-text">
+          <p class="section-eyebrow reveal">From the Stage to the Page</p>
+          <h2 class="section-title reveal reveal-delay-1" id="book-title">
+            Trauma Attraction<br/><em>The Novel</em>
+          </h2>
+
+          <p class="book-tagline reveal reveal-delay-2">
+            &quot;When pain feels like love, breaking free becomes the hardest choice.&quot;
+          </p>
+
+          <p class="book-price reveal reveal-delay-3">$25.99</p>
+
+          <p class="book-presale-note reveal reveal-delay-4">
+            Pre-order now through September 1st. Books ship &mdash; or are available for pickup &mdash; starting November 2026.
+          </p>
+
+          <a href="https://checkout.square.site/merchant/MLBFVWZNY9SH3/checkout/RARNSV25I4DYPFZJROOMVIYN"
+             class="btn-primary reveal reveal-delay-5"
+             target="_blank"
+             rel="noopener"
+             aria-label="Pre-order Trauma Attraction the novel">
+            Pre-Order the Book
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="cta-band-inner">
+      <p class="section-eyebrow reveal" style="margin-bottom:16px;">Don't Miss This</p>
+      <h2 class="cta-band-title reveal reveal-delay-1" id="cta-title">
+        Seats are limited.<br/>Experience <em>Trauma Attraction</em> live.
+      </h2>
+<p class="cta-band-sub reveal reveal-delay-2">
+  December 12–13, 2026 · Sat: Doors 6 PM / Show 7 PM · Sun: Doors 4 PM / Show 5 PM · Edge Theater · 5451 N. Broadway, Chicago, IL 60640
+</p>
+      <div class="hero-ctas reveal reveal-delay-3">
+        <a href="https://square.link/u/bAwhIsuK"
+           class="btn-primary"
+           target="_blank"
+           rel="noopener"
+           style="font-size: 0.76rem; padding: 18px 52px;"
+           aria-label="Buy tickets for Trauma Attraction, December 12">
+          Buy Tickets — Dec 12
+        </a>
+        <a href="https://square.link/u/bxWueHNr"
+           class="btn-primary"
+           target="_blank"
+           rel="noopener"
+           style="font-size: 0.76rem; padding: 18px 52px;"
+           aria-label="Buy tickets for Trauma Attraction, December 13">
+          Buy Tickets — Dec 13
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer role="contentinfo">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-logo">1st Time Productions</div>
+        <p class="footer-tagline">
+          Chicago-based theatrical company creating emotionally bold, community-centered live experiences.
+        </p>
+        <nav class="footer-social" aria-label="Social media links">
+          <!-- Replace href="#" with your actual social URLs -->
+          <a href="#" class="social-btn" aria-label="Facebook" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Twitter / X" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="YouTube" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="#050405"/></svg>
+          </a>
+        </nav>
+      </div>
+
+      <nav aria-label="Quick links">
+        <p class="footer-col-title">Navigate</p>
+        <ul class="footer-links" role="list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#event">Event Info</a></li>
+          <li><a href="#cast">Cast & Team</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Event information">
+        <p class="footer-col-title">Event</p>
+        <ul class="footer-links" role="list">
+          <li><a href="#event">Dates & Times</a></li>
+          <li><a href="#event">Venue</a></li>
+          <li><a href="https://square.link/u/bAwhIsuK" target="_blank" rel="noopener">Tickets — Dec 12</a></li>
+          <li><a href="https://square.link/u/bxWueHNr" target="_blank" rel="noopener">Tickets — Dec 13</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company information">
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links" role="list">
+          <li><a href="https://1sttimeproductions.com/about-us/" target="_blank" rel="noopener">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 1st Time Productions. All rights reserved.</p>
+      <nav class="footer-legal" aria-label="Legal links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ============ STICKY BAR ============ -->
+  <div class="sticky-bar" id="stickyBar" role="complementary" aria-label="Ticket purchase reminder">
+    <div class="sticky-bar-text">
+      <strong>Trauma Attraction</strong> — December 12–13, 2026
+    </div>
+    <div class="sticky-bar-right">
+      <span class="sticky-dates" aria-hidden="true">Edge Theater</span>
+      <a href="https://square.link/u/bAwhIsuK"
+         class="btn-primary"
+         target="_blank"
+         rel="noopener"
+         style="padding:10px 18px; font-size:0.62rem;"
+         aria-label="Buy tickets for Trauma Attraction, December 12">
+        Dec 12
+      </a>
+      <a href="https://square.link/u/bxWueHNr"
+         class="btn-primary"
+         target="_blank"
+         rel="noopener"
+         style="padding:10px 18px; font-size:0.62rem;"
+         aria-label="Buy tickets for Trauma Attraction, December 13">
+        Dec 13
+      </a>
+      <button class="sticky-close" id="stickyClose" aria-label="Dismiss ticket reminder">×</button>
+    </div>
+  </div>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script>
+    // ---- Nav scroll behavior ----
+    const nav = document.getElementById('nav');
+    const heroBg = document.getElementById('heroBg');
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Subtle parallax on hero bg
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight * 1.5) {
+        heroBg.style.transform = `scale(1.05) translateY(${scrolled * 0.18}px)`;
+      }
+    }, { passive: true });
+
+    // ---- Mobile menu ----
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOpen   = document.getElementById('menuOpen');
+    const menuClose  = document.getElementById('menuClose');
+
+    menuOpen.addEventListener('click', () => {
+      mobileMenu.style.display = 'flex';
+      requestAnimationFrame(() => mobileMenu.classList.add('open'));
+      menuOpen.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeMobile() {
+      mobileMenu.classList.remove('open');
+      setTimeout(() => { mobileMenu.style.display = 'none'; }, 400);
+      menuOpen.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    menuClose.addEventListener('click', closeMobile);
+
+    mobileMenu.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMobile();
+    });
+
+    // ---- Scroll reveal ----
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ---- Sticky bar ----
+    const stickyBar   = document.getElementById('stickyBar');
+    const stickyClose = document.getElementById('stickyClose');
+    let stickyDismissed = false;
+
+    const stickyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!stickyDismissed) {
+          stickyBar.classList.toggle('visible', !entry.isIntersecting);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    // Show sticky bar after hero leaves viewport
+    const hero = document.getElementById('home');
+    stickyObserver.observe(hero);
+
+    stickyClose.addEventListener('click', () => {
+      stickyDismissed = true;
+      stickyBar.classList.remove('visible');
+    });
+
+    // ---- Hero bg loaded class (for CSS transition) ----
+    window.addEventListener('load', () => {
+      heroBg.classList.add('loaded');
+    });
+
+    // ---- Smooth scroll for anchor links ----
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
